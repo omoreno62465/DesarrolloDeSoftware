@@ -1,7 +1,7 @@
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad Ean (Bogot· - Colombia)
- * Departamento de TecnologÌas de la InformaciÛn y Comunicaciones
+ * Universidad Ean (Bogot√° - Colombia)
+ * Departamento de Tecnolog√≠as de la Informaci√≥n y Comunicaciones
  * Licenciado bajo el esquema Academic Free License version 2.1
  * <p>
  * Proyecto Central de Pacientes.
@@ -25,7 +25,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- * Esta es la ventana principal de la aplicaciÛn.
+ * Esta es la ventana principal de la aplicaci√≥n.
  */
 public class InterfazCentralPacientes extends JFrame {
     // -----------------------------------------------------------------
@@ -38,7 +38,7 @@ public class InterfazCentralPacientes extends JFrame {
     public static final int ANTES = 0;
 
     /**
-     * Constante para adicionar despuÈs
+     * Constante para adicionar despu√©s
      */
     public static final int DESPUES = 1;
 
@@ -126,14 +126,14 @@ public class InterfazCentralPacientes extends JFrame {
     }
 
     // -----------------------------------------------------------------
-    // MÈtodos
+    // M√©todos
     // -----------------------------------------------------------------
 
     /**
-     * Muestra el di·logo para agregar un paciente.
-     * @param formaAdicion El punto en el que va ser adicionado el paciente (de primero, ˙ltimo, antes de otro paciente o despuÈs de otro paciente). formaAdicion pertenece a
+     * Muestra el di√°logo para agregar un paciente.
+     * @param formaAdicion El punto en el que va ser adicionado el paciente (de primero, √∫ltimo, antes de otro paciente o despu√©s de otro paciente). formaAdicion pertenece a
      *        {ANTES, DESPUES, COMIENZO, FINAL}
-     * @param codigo El cÛdigo del paciente con relaciÛn al cual se va a realizar la adiciÛn. Su valor sÛlo es considerado si formaAdicion es ANTES o DESPUES
+     * @param codigo El c√≥digo del paciente con relaci√≥n al cual se va a realizar la adici√≥n. Su valor s√≥lo es considerado si formaAdicion es ANTES o DESPUES
      */
     public void mostrarDialogoInsertarPaciente(int formaAdicion, int codigo) {
         DialogoInsertarPaciente dialogo = new DialogoInsertarPaciente(this, formaAdicion, codigo);
@@ -142,8 +142,8 @@ public class InterfazCentralPacientes extends JFrame {
     }
 
     /**
-     * Si la lista de pacientes no est· vacÌa muestra el di·logo para que el usuario seleccione la forma en la que desea realizar la adiciÛn del paciente. Si la lista de
-     * pacientes est· vacÌa se muestra el di·logo para crear un paciente
+     * Si la lista de pacientes no est√° vac√≠a muestra el di√°logo para que el usuario seleccione la forma en la que desea realizar la adici√≥n del paciente. Si la lista de
+     * pacientes est√° vac√≠a se muestra el di√°logo para crear un paciente
      *
      */
     public void mostrarDialogoOpcionesAgregarPaciente() {
@@ -163,7 +163,7 @@ public class InterfazCentralPacientes extends JFrame {
     public void agregarPaciente(int formaAdicion, int codPaciente, int elCodigo, String elNombre, String laClinica, String laHistoriaClinica, int elSexo) throws NoExisteException, YaExisteException {
         Paciente paciente = new Paciente(elCodigo, elNombre, laClinica, laHistoriaClinica, elSexo);
 
-        // Se verifica que no exista un paciente con el cÛdigo del nuevo paciente
+        // Se verifica que no exista un paciente con el c√≥digo del nuevo paciente
         if (central.localizar(elCodigo) != null) {
             throw new YaExisteException(elCodigo);
         }
@@ -186,8 +186,8 @@ public class InterfazCentralPacientes extends JFrame {
     }
 
     /**
-     * Retorna la lista de clÌnicas que maneja la central
-     * @return La lista de clÌnicas que maneja la central
+     * Retorna la lista de cl√≠nicas que maneja la central
+     * @return La lista de cl√≠nicas que maneja la central
      */
     public ArrayList<String> darClinicasCentral() {
         return central.darListaClinicas();
@@ -202,10 +202,10 @@ public class InterfazCentralPacientes extends JFrame {
     }
 
     /**
-     * Pide el cÛdigo del paciente que se desea buscar, si lo encuentra muestra su informaciÛn en un dialogo. Si no se encuentra el paciente se muestra un mensaje indic·ndolo.
+     * Pide el c√≥digo del paciente que se desea buscar, si lo encuentra muestra su informaci√≥n en un dialogo. Si no se encuentra el paciente se muestra un mensaje indic√°ndolo.
      */
     public void buscarPaciente() {
-        String codigo = JOptionPane.showInputDialog(this, "CÛdigo:", "B˙squeda Pacientes", JOptionPane.QUESTION_MESSAGE);
+        String codigo = JOptionPane.showInputDialog(this, "C√≥digo:", "B√∫squeda Pacientes", JOptionPane.QUESTION_MESSAGE);
         try {
             if (codigo != null) {
                 int cod = Integer.parseInt(codigo);
@@ -216,39 +216,39 @@ public class InterfazCentralPacientes extends JFrame {
                     mostrarInformacionPaciente(paciente);
                 }
                 else {
-                    JOptionPane.showMessageDialog(this, "El paciente con cÛdigo " + cod + " no se encuentra registrado", "B˙squeda de Pacientes", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "El paciente con c√≥digo " + cod + " no se encuentra registrado", "B√∫squeda de Pacientes", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }
         catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El cÛdigo del paciente debe ser un valor numÈrico", "B˙squeda de Pacientes", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El c√≥digo del paciente debe ser un valor num√©rico", "B√∫squeda de Pacientes", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
-     * Pide la cÈdula del paciente que se desea eliminar, si lo elimina lo indica. Si no se elimina el paciente se muestra un mensaje indic·ndolo.
+     * Pide la c√©dula del paciente que se desea eliminar, si lo elimina lo indica. Si no se elimina el paciente se muestra un mensaje indic√°ndolo.
      */
     public void eliminarPaciente() {
-        String codigo = JOptionPane.showInputDialog(this, "CÛdigo:", "EliminaciÛn Pacientes", JOptionPane.QUESTION_MESSAGE);
+        String codigo = JOptionPane.showInputDialog(this, "C√≥digo:", "Eliminaci√≥n Pacientes", JOptionPane.QUESTION_MESSAGE);
         try {
             if (codigo != null) {
                 int cod = Integer.parseInt(codigo);
                 central.eliminarPaciente(cod);
                 refrescarListaPacientes();
-                JOptionPane.showMessageDialog(this, "El paciente fue eliminado", "EliminaciÛn Pacientes", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El paciente fue eliminado", "Eliminaci√≥n Pacientes", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El cÛdigo del paciente debe ser un valor numÈrico", "EliminaciÛn Pacientes", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "El c√≥digo del paciente debe ser un valor num√©rico", "Eliminaci√≥n Pacientes", JOptionPane.ERROR_MESSAGE);
         }
         catch (NoExisteException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "EliminaciÛn Pacientes", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Eliminaci√≥n Pacientes", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
-     * Muestra en un di·logo la informaciÛn del paciente dado
-     * @param paciente El paciente al que se le va a mostrar la informaciÛn. paciente!=null.
+     * Muestra en un di√°logo la informaci√≥n del paciente dado
+     * @param paciente El paciente al que se le va a mostrar la informaci√≥n. paciente!=null.
      */
     public void mostrarInformacionPaciente(Paciente paciente) {
         DialogoMostrarInformarcionPaciente dialogo = new DialogoMostrarInformarcionPaciente(this, paciente);
@@ -257,11 +257,11 @@ public class InterfazCentralPacientes extends JFrame {
     }
 
     // -----------------------------------------------------------------
-    // Puntos de ExtensiÛn
+    // Puntos de Extensi√≥n
     // -----------------------------------------------------------------
 
     /**
-     * MÈtodo para la extensiÛn 1
+     * M√©todo para la extensi√≥n 1
      */
     public void reqFuncOpcion1() {
         int resultado = central.cantHombres();
@@ -269,22 +269,22 @@ public class InterfazCentralPacientes extends JFrame {
     }
 
     /**
-     * MÈtodo para la extensiÛn 2
+     * M√©todo para la extensi√≥n 2
      */
     public void reqFuncOpcion2() {
         int resultado = central.cantMujeres();
-        JOptionPane.showMessageDialog(this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "La cantidad de mujeres en la lista es: " + resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
-     * MÈtodo para la extensiÛn 3
+     * M√©todo para la extensi√≥n 3
      */
     public void reqFuncOpcion3() {
         System.exit(0);
     }
 
     /**
-     * MÈtodo para la extensiÛn 4
+     * M√©todo para la extensi√≥n 4
      */
     public void reqFuncOpcion4() {
         String resultado = central.metodo4();
@@ -292,7 +292,7 @@ public class InterfazCentralPacientes extends JFrame {
     }
 
     /**
-     * MÈtodo para la extensiÛn 5
+     * M√©todo para la extensi√≥n 5
      */
     public void reqFuncOpcion5() {
         String resultado = central.metodo4();
@@ -304,8 +304,8 @@ public class InterfazCentralPacientes extends JFrame {
     // -----------------------------------------------------------------
 
     /**
-     * Este mÈtodo ejecuta la aplicaciÛn, creando una nueva interfaz
-     * @param args Son los argumentos de la aplicaciÛn. No se requiere ninguno.
+     * Este m√©todo ejecuta la aplicaci√≥n, creando una nueva interfaz
+     * @param args Son los argumentos de la aplicaci√≥n. No se requiere ninguno.
      */
     public static void main(String[] args) {
         InterfazCentralPacientes interfaz = new InterfazCentralPacientes();
